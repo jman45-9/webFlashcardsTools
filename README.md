@@ -1,2 +1,2 @@
 # Web Flashcard Tools
-This is a website to provide alternative utilities for flashcards such as creating tests. Written in TS and HTML(For fully static pages). Feel free to download the code for offline use.
+This project serves as an alternative to paid flashcard tools such as creating tests(Can not name specific sites for legal reasons)
