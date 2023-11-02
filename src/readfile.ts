@@ -6,4 +6,9 @@ function addElements():void
     const uploadDiv:HTMLDivElement = document.createElement("div");
     const uploadText:HTMLParagraphElement = document.createElement("p");
     const uploadButton:HTMLInputElement = document.createElement("input");
+    
+    uploadText.textContent = "Please upload your flashcard set. See 'help' for syntax";
+
+    uploadDiv.appendChild(uploadText);
+    document.body.appendChild(uploadDiv);
 }
