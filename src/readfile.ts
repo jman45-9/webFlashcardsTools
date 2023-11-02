@@ -1,24 +1,46 @@
 // * This file serves to read the users flashcard file
-document.body.onload = addElements;
+document.body.onload = main;
+
+const uploadDiv:HTMLDivElement = document.createElement("div");
+const uploadText:HTMLParagraphElement = document.createElement("p");
+const uploadInput:HTMLInputElement = document.createElement("input");
+const uploadSubmit:HTMLButtonElement = document.createElement("button")
+
+function main():void 
+{
+    addElements();
+}
 
 function addElements():void 
 {
     // Code for file input
-    const uploadDiv:HTMLDivElement = document.createElement("div");
-    const uploadText:HTMLParagraphElement = document.createElement("p");
-    const uploadButton:HTMLInputElement = document.createElement("input");
-    const uploadSubmit:HTMLButtonElement = document.createElement("button")
-    
+        
     uploadDiv.id = "uploadDiv";
     
     uploadText.id = "uploadText";
     uploadText.textContent = "Please upload your flashcard set. See 'help' for syntax";
     
-    uploadButton.id = "uploadBtn";
-    uploadButton.type = "file";
+    uploadInput.id = "uploadBtn";
+    uploadInput.type = "file";
+    
+    uploadSubmit.id = "uploadSubmit";
+    uploadSubmit.textContent = "Submit";
 
     uploadDiv.appendChild(uploadText);
-    uploadDiv.appendChild(uploadButton);
+    uploadDiv.appendChild(uploadInput);
+    uploadDiv.appendChild(uploadSubmit);
 
     document.body.appendChild(uploadDiv);
 }
+
+function readFile():void
+{
+    const file = uploadInput.files?.item(0);
+    if(file === null)
+        return;
+    console.log(file);
+    
+}
+
+uploadSubmit.addEventListener("click", readFile);
+
