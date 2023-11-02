@@ -1,4 +1,5 @@
-// * This file serves to read the users flashcard file
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 document.body.onload = main;
 var uploadDiv = document.createElement("div");
 var uploadText = document.createElement("p");
