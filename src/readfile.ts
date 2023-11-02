@@ -1,5 +1,4 @@
 // * This file serves to read the users flashcard file
-import fs from 'fs';
 document.body.onload = main;
 
 const uploadDiv:HTMLDivElement = document.createElement("div");
@@ -39,8 +38,14 @@ function readFile():void
     const file = uploadInput.files?.item(0);
     if(file === null)
         return;
-    console.log(file);
+    const reader:FileReader = new FileReader;
+    reader.readAsText((file as File));
     
+    reader.onload = function(e)
+    {
+        let text = e.target?.result;
+        console.log(text); 
+    }
 }
 
 uploadSubmit.addEventListener("click", readFile);
