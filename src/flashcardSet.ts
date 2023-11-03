@@ -1,5 +1,16 @@
-import {flashcard} from "./flashcard"
-export class flashcardSet {
+import {FlashCard} from "./flashcard"
+export class FlashCardSet {
     length: number;
-    cards: flashcard[];
+    cards: FlashCard[];
+    
+    constructor()
+    {
+        length = 0;
+    }
+    
+    addFlashcard(newCard:FlashCard)
+    {
+        this.cards.push(newCard);
+        length++; 
+    }
 }
