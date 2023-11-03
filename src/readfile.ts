@@ -1,4 +1,7 @@
 // * This file serves to read the users flashcard file
+
+import {flashcardSet} from "./flashcardSet";
+
 document.body.onload = main;
 
 const uploadDiv:HTMLDivElement = document.createElement("div");
