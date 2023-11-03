@@ -41,10 +41,11 @@ function readFile():void
     const reader:FileReader = new FileReader;
     reader.readAsText((file as File));
     
-    reader.onload = function(e)
+    reader.onload = function(event)
     {
-        let text = e.target?.result;
-        console.log(text); 
+        let text = (event.target?.result as string);
+        let lines = text.split('\n');
+        console.log(lines[0]);
     }
 }
 
