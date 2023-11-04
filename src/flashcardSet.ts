@@ -1,11 +1,12 @@
-import {FlashCard} from "./flashcard"
-export class FlashCardSet {
+import FlashCard from "./flashcard"
+export default class FlashCardSet {
     length: number;
     cards: FlashCard[];
     
     constructor()
     {
-        length = 0;
+        this.length = 0;
+        this.cards = [];
     }
     
     addFlashcard(newCard:FlashCard)

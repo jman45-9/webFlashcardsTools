@@ -1,4 +1,4 @@
-export class FlashCard {
+export default class FlashCard {
     front: string;
     back: string;
     

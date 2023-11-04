@@ -5,6 +5,6 @@ SOURCEFILES = $(wildcard ${SRCDIREC}*.ts)
 
 compile:
 	@echo "Compiling code..."
-	@${CC} ${SOURCEFILES} --outDir ${OUTDIR}
+	@${CC} ${SOURCEFILES} --outDir ${OUTDIR} -p ./.tsconfig.json
 	@echo "Done"
 
