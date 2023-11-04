@@ -54,15 +54,18 @@ function readFile():void
         {
             separator = wordToSeparator(lines[0].substring(10, lines[0].length))
         }
+
+        let set = new FlashCardSet;
         for (let iii:number = 0; lines.length > iii; iii++)
         {
+            if(lines[iii].substring(0,1) === "#")
+                break;
             let card:FlashCard|null = makeCard(lines[iii], separator);
             if(card === null)
             {
                 generateErrForUser("Please use a supported separator. See 'help' for a list of valid options");
                 return;
             }
-            let set = new FlashCardSet;
         }
     }
 }
