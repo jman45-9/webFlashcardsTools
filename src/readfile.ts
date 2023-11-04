@@ -56,14 +56,19 @@ function readFile():void
         }
         for (let iii:number = 0; lines.length > iii; iii++)
         {
-            makeCard(lines[iii], separator);
+            let card:FlashCard|null = makeCard(lines[iii], separator);
+            if(card === null)
+            {
+                generateErrForUser("Please use a supported separator. See 'help' for a list of valid options");
+                return;
+            }
             let set = new FlashCardSet;
         }
     }
 }
 
 //@param fullCard is both sides of the card passed in on a line
-function makeCard(fullCard:string, separator:string|null):FlashCard
+function makeCard(fullCard:string, separator:string|null):FlashCard|null
 {
     if(separator === null)
     {
@@ -71,7 +76,7 @@ function makeCard(fullCard:string, separator:string|null):FlashCard
         if(separator === null)
         {
             console.log("Failed to determine card separator. Code will now halt");
-            while(true){/*this loop serves to bring execution to a full stop*/}
+            return null;
         }
     }
     console.log(separator);
@@ -97,10 +102,26 @@ function wordToSeparator(word:string):string|null
     let separatorWords:string[] = ["tab", "pipe", "semicolon", "colon", "comma", "space"];
     for(let iii:number = 0; 6 > iii; iii++)
     {
-        if(word.indexOf(separators[iii]) >= 0)
+        if(word.indexOf(separatorWords[iii]) >= 0)
         return separators[iii];
     }
     return null;
+}
+
+function generateErrForUser(message:string):void
+{
+    let existingErrMsg = document.getElementById("errMsg");
+    if(existingErrMsg != null)
+    {
+        existingErrMsg.textContent = message;
+        return;
+    }
+    let newErrMsg = document.createElement("p");
+    newErrMsg.id = "errMsg";
+    newErrMsg.textContent = message;
+    newErrMsg.style.color = "red";
+    newErrMsg.style.fontSize = "50px";
+    document.body.appendChild(newErrMsg);
 }
 
 uploadSubmit.addEventListener("click", readFile);
