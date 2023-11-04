@@ -58,14 +58,15 @@ function readFile():void
         let set = new FlashCardSet;
         for (let iii:number = 0; lines.length > iii; iii++)
         {
-            if(lines[iii].substring(0,1) === "#")
+            if(lines[iii].substring(0,1) === "#" || lines[iii].length === 0)
                 break;
             let card:FlashCard|null = makeCard(lines[iii], separator);
             if(card === null)
             {
-                generateErrForUser("Please use a supported separator. See 'help' for a list of valid options");
                 return;
             }
+            console.log(card.back);
+            console.log(card.front);
         }
     }
 }
@@ -78,14 +79,17 @@ function makeCard(fullCard:string, separator:string|null):FlashCard|null
         separator = getAnkiSeparator(fullCard);
         if(separator === null)
         {
+            generateErrForUser("Please use a supported separator. See 'help' for a list of valid options");
             console.log("Failed to determine card separator. Code will now halt");
             return null;
         }
     }
-    console.log(separator);
-    
-    let temp = new FlashCard("bob", "joe");
-    return temp;
+    let separatorIndex:number = fullCard.indexOf(separator);
+    let front:string = fullCard.substring(0, separatorIndex);
+    let back:string = fullCard.substring(separatorIndex+1, fullCard.length);
+
+    let card = new FlashCard(front, back);
+    return card;
 }
 
 function getAnkiSeparator(input:string):string|null
