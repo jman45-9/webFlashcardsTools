@@ -8,7 +8,7 @@ export default class FlashCardSet {
     {
         this.length = 0;
         this.cards = [];
-        this.complete = true;
+        this.complete = false;
     }
     
     addFlashcard(newCard:FlashCard)
