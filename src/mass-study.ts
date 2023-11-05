@@ -1,7 +1,12 @@
 import { cardSet } from "./readfile.js";
 
-var lastCard:HTMLDivElement|null = null;
 const nextCardBtn:HTMLButtonElement = document.createElement("button");
+const flipBtn:HTMLButtonElement = document.createElement("button");
+var cardFront:HTMLParagraphElement;
+var cardBack:HTMLParagraphElement;
+var cardBreak:HTMLHRElement;
+
+var cardCounter:number = 0;
 
 function checkForSet():void
 {
@@ -11,11 +16,32 @@ function checkForSet():void
     
     nextCardBtn.textContent = "Next Card";
     document.body.appendChild(nextCardBtn);
+    flipBtn.textContent = "Flip";
 }
 
-function addCard():void
+function nextCard():void
 {
-    //TODO write code to add one flashcard on top of another after pushing the next btn
+    cardFront = document.createElement("p");
+    cardBack = document.createElement("p");
+    cardBreak = document.createElement("hr");
+
+    cardFront.textContent = cardSet.cards[cardCounter].front;
+    cardBack.textContent = cardSet.cards[cardCounter].back;
+    cardCounter++;
+
+    document.body.appendChild(cardBreak);
+    document.body.appendChild(cardFront);
+    document.body.appendChild(flipBtn);
 }
+
+function flipCard():void
+{
+    document.body.appendChild(cardBack);
+    document.body.appendChild(nextCardBtn);
+}
+
+
+nextCardBtn.addEventListener("click", nextCard);
+flipBtn.addEventListener("click", flipCard);
 
 const checkSetInterval:number = setInterval(checkForSet, 10);
