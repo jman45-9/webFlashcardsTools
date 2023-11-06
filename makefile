@@ -2,4 +2,4 @@ FINALDIR = ../webFlashCardToolsFinal
 FILESDIR = pages
 
 finalize:
-	@cp ${FILESDIR}/* ${FINALDIR}/
+	@cp ${FILESDIR}/* LICENSE README.md ${FINALDIR}/
