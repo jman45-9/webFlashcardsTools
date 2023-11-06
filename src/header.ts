@@ -16,7 +16,7 @@ function createHeader():void
     homeBtn.style.top = "20px";
     homeBtn.style.right = "20px"
     
-    infoBtn.textContent = "infoBtn";
+    infoBtn.textContent = "Info";
     infoBtn.style.position = "absolute";
     infoBtn.style.top = "20px";
     infoBtn.style.right = "70px"
