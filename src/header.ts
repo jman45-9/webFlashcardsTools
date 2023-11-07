@@ -1,6 +1,7 @@
 const headerDiv:HTMLDivElement = document.createElement("div");
 const homeBtn:HTMLButtonElement = document.createElement("button");
 const infoBtn:HTMLButtonElement = document.createElement("button");
+const headerText:HTMLParagraphElement = document.createElement("p");
 
 function createHeader():void
 {
@@ -20,9 +21,12 @@ function createHeader():void
     infoBtn.style.position = "absolute";
     infoBtn.style.top = "20px";
     infoBtn.style.right = "70px"
+    
+    headerText.textContent = (document.currentScript?.getAttribute("pageTitle") as string);
 
     headerDiv.appendChild(homeBtn);
     headerDiv.appendChild(infoBtn);
+    headerDiv.appendChild(headerText);
     document.body.appendChild(headerDiv);
 }
 
