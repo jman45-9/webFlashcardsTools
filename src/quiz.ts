@@ -19,9 +19,27 @@ function mcqMake():void
 {
     for(let iii = 0; cardSet.length-1 > iii; iii++)
     {
-        let randomQNum = Math.random() * cardSet.length-1;
+        let randomQNum = Math.floor(Math.random() * cardSet.length-1);
         let question:string = cardSet.cards[randomQNum].front;
         let correctAns:string = cardSet.cards[randomQNum].back;
+        let correctPos:number = Math.floor(Math.random() * 3);
+        let buttons:HTMLInputElement[] = [];
+        let choices:HTMLLabelElement[] = [];
+        
+        let choiceIndexs:number[] = [randomQNum];
+        
+        
+        
+        for(let iii = 0; 4 > iii; iii++)
+        {
+            let newButton = document.createElement("input");
+            newButton.type = "radio";
+            newButton.name = 
+            if (iii === correctPos)
+            {
+                
+            }
+        }
 
     }
 }
