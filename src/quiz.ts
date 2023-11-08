@@ -17,6 +17,7 @@ function checkForSet():void
 
 function mcqMake():void
 {
+    let questionID:number = 0;
     for(let iii = 0; cardSet.length-1 > iii; iii++)
     {
         let randomQNum = Math.floor(Math.random() * cardSet.length-1);
@@ -27,20 +28,21 @@ function mcqMake():void
         let choices:HTMLLabelElement[] = [];
         
         let choiceIndexs:number[] = [randomQNum];
-        
-        
-        
+
         for(let iii = 0; 4 > iii; iii++)
         {
             let newButton = document.createElement("input");
             newButton.type = "radio";
-            //newButton.name = /*uid*/;
+            newButton.name = String(questionID);
+            // newButton.id = /*uid*/;
+            
+            let newButtonLabel = document.createElement("label");
             if (iii === correctPos)
             {
-                
+                newButton.value = cardSet.cards[iii].back;
             }
         }
-
+        questionID++;
     }
 }
 
