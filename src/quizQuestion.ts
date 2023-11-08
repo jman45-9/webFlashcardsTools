@@ -1,11 +1,11 @@
 export default class QuizQuestion
 {
     question:string;
-    correctAns:number;
+    correctAns:string;
     buttons:HTMLInputElement[];
     choices:HTMLLabelElement[];
 
-    constructor(question:string, correctAns:number, buttons:HTMLInputElement[], choices:HTMLLabelElement[])
+    constructor(question:string, correctAns:string, buttons:HTMLInputElement[], choices:HTMLLabelElement[])
     {
         this.question = question;
         this.correctAns = correctAns;
