@@ -34,7 +34,7 @@ function mcqMake():void
         {
             let newButton = document.createElement("input");
             newButton.type = "radio";
-            newButton.name = 
+            //newButton.name = /*uid*/;
             if (iii === correctPos)
             {
                 
