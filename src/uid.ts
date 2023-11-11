@@ -40,6 +40,6 @@ function UIDValidityCheck(uid:number[], used:number[][]):boolean
 }
 
 var used:number[][] = [];
-used.push();
+used.push([45,88,64,46,48]);
 
 console.log(UIDValidityCheck([44,88,64,46,48], used));
