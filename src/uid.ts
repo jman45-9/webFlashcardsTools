@@ -19,4 +19,27 @@ function makeID(digits:number):number[]
     return id;
 }
 
-console.log(makeID(5));
+function UIDValidityCheck(uid:number[], used:number[][]):boolean
+{
+    for(let iii=0; used.length > iii; iii++)
+    {
+        for(let jjj=0; uid.length > jjj; jjj++)
+        {
+            if(used[iii][jjj] != uid[jjj])
+            {
+                break;
+            }
+            if(jjj === uid.length - 1)
+            {
+                return false;
+            }
+            
+        }
+    }
+    return true;
+}
+
+var used:number[][] = [];
+used.push();
+
+console.log(UIDValidityCheck([44,88,64,46,48], used));
