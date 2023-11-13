@@ -6,7 +6,17 @@ class UIDOutput
 
 function generateUID(digits:number, used:number[][]|null)
 {
-    let newID:number[] = makeID(digits);
+    let newID:number[];
+    let isValid:boolean;
+    do
+    {
+        newID = makeID(digits);
+        if(used === null)
+            break;
+        console.log("should not be here");
+        isValid = UIDValidityCheck(newID, used as number[][])
+    }while(!isValid);
+    console.log("here is good");
 }
 
 function makeID(digits:number):number[]
@@ -39,7 +49,4 @@ function UIDValidityCheck(uid:number[], used:number[][]):boolean
     return true;
 }
 
-var used:number[][] = [];
-used.push([45,88,64,46,48]);
-
-console.log(UIDValidityCheck([44,88,64,46,48], used));
+generateUID(5, []);
