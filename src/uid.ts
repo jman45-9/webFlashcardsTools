@@ -1,10 +1,10 @@
-class UIDOutput 
+export class UIDOutput 
 {
     usedIDs:number[][] = [];
     UID:string = "";
 }
 
-function generateUID(digits:number, used:number[][]|null):UIDOutput 
+export function generateUID(digits:number, used:number[][]|null):UIDOutput 
 { 
     let newID:number[];
     let isValid:boolean;
@@ -57,15 +57,3 @@ function characterize(uid:number[]):string
     } 
 return output; 
 }
-function test() 
-{
-    let data = new UIDOutput; 
-    data = generateUID(5, null);
-    for(let iii = 0; 100000 > iii; iii++)
-    {
-        console.log(data.UID);
-        data = generateUID(5, data.usedIDs);
-    }
-}
-
-test();

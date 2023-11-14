@@ -1,5 +1,7 @@
 import { cardSet } from "./readfile.js";
 import QuizQuestion from "./quizQuestion.js";
+import { UIDOutput } from "./uid.js";
+import { generateUID } from "./uid.js";
 
 const startBtn:HTMLButtonElement = document.createElement("button");
 var questions:QuizQuestion[];
@@ -28,13 +30,15 @@ function mcqMake():void
         let choices:HTMLLabelElement[] = [];
         
         let choiceIndexs:number[] = [randomQNum];
+        let uids = new UIDOutput;
 
         for(let iii = 0; 4 > iii; iii++)
         {
             let newButton = document.createElement("input");
             newButton.type = "radio";
             newButton.name = String(questionID);
-            // newButton.id = /*uid*/;
+            uids = generateUID(5, uids.usedIDs);
+            newButton.id = uids.UID;
             
             let newButtonLabel = document.createElement("label");
             if (iii === correctPos)
