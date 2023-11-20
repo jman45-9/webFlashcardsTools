@@ -22,7 +22,7 @@ function mcqMake():void
     let questionID:number = 0;
     for(let iii = 0; cardSet.length-1 > iii; iii++)
     {
-        let randomQNum = Math.floor(Math.random() * cardSet.length-1);
+        let randomQNum = Math.floor(Math.random() * (cardSet.length-1));
         let question:string = cardSet.cards[randomQNum].front;
         let correctAns:string = cardSet.cards[randomQNum].back;
         let correctPos:number = Math.floor(Math.random() * 3);
@@ -43,8 +43,22 @@ function mcqMake():void
             let newButtonLabel = document.createElement("label");
             if (iii === correctPos)
             {
-                newButton.value = cardSet.cards[iii].back;
+                newButton.value = correctAns;
             }
+            else
+            {
+                let randomAnsNum = Math.floor(Math.random()*(cardSet.length-1));
+                if(choiceIndexs.includes(randomAnsNum))
+                {
+                    iii--;
+                    break;
+                }
+                choiceIndexs.push(randomAnsNum);
+                newButton.value = cardSet.cards[
+                randomAnsNum].back;
+                
+            }
+            document.body.appendChild(newButton);
         }
         questionID++;
     }
